@@ -1,12 +1,47 @@
-
-body {
-    font-family: Arial, sans-serif;
+/* Custom styles for the navbar */
+.navbar {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
 }
 
-h1, h2 {
-    color: #2c3e50;
+.navbar-brand {
+    font-weight: bold; 
+    font-size: 1.5rem; 
 }
 
-table {
-    margin-top: 20px;
+.nav-item{
+    font-weight: bold;
 }
+
+.nav-link {
+    font-size: 1.1rem; 
+    margin-left: 20px; 
+}
+
+.nav-link:hover {
+    color: #007bff; 
+    text-decoration: underline; 
+}
+
+
+footer {
+    background-color: #f8f9fa; 
+    padding: 20px 0; 
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+.container {
+    margin-top: 20px; 
+}
+
+.table {
+    margin-top: 20px; 
+}
+
+.table img {
+    max-width: 100px; 
+    height: auto;
+    border-radius: 5px; 
+}
+
