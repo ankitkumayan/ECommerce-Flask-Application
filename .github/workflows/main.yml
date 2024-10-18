@@ -3,7 +3,7 @@ name: Github Action
 on:
   push:
     branches:
-      - main
+      - ECommerce-Flask-Application
 
 jobs:
   build:
@@ -16,15 +16,15 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.11'  # Specify your Python version
+          python-version: '3.11'
 
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
-          pip install python-dotenv  # Ensure dotenv is installed
+          pip install python-dotenv  
 
       - name: Run application
         env:
-          MONGODB_USERNAME: ${{ secrets.Ankit26114 }}  # Ensure these secret names are correct
+          MONGODB_USERNAME: ${{ secrets.Ankit26114 }} 
           MONGODB_PASSWORD: ${{ secrets.123Ankit }}
-        run: python app.py  # Adjust if your entry point is different
+        run: python app.py 
