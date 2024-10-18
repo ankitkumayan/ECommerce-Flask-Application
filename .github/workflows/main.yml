@@ -3,7 +3,7 @@ name: Github Action
 on:
   push:
     branches:
-      - master
+      - ECommerce-Flask-Application
 
 jobs:
   build:
