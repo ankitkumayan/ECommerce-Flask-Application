@@ -3,7 +3,7 @@ from pymongo import MongoClient
 from dotenv import load_dotenv
 import os
 
-# Load environment variables from .env file
+# Load environment variables from .env
 load_dotenv()
 
 MONGODB_USERNAME = os.getenv('ankit26114')
