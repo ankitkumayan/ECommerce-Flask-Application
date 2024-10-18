@@ -25,6 +25,6 @@ jobs:
 
       - name: Run application
         env:
-          MONGODB_USERNAME: ${{ secrets.Ankit26114 }}
-          MONGODB_PASSWORD: ${{ secrets.123Ankit }}
+          MONGODB_USERNAME: ${{ Ankit26114 }}
+          MONGODB_PASSWORD: ${{ 123Ankit }}
         run: python app.py 
