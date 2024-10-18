@@ -1,9 +1,9 @@
-name: CI
+name: Github Action
 
 on:
   push:
     branches:
-      - main  # Adjust this if you're using a different branch
+      - master
 
 jobs:
   build:
@@ -16,12 +16,12 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.8'  # Specify your Python version
+          python-version: '3.11' 
 
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
-          pip install python-dotenv  # Ensure dotenv is installed
+          pip install python-dotenv 
 
       - name: Run application
         env:
