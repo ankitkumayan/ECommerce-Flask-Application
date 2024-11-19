@@ -18,7 +18,7 @@ products_collection = db['products']
 
 @app.route('/')
 def home():
-    return "Home Page"
+    return render_template('home.html')
 
 @app.route('/products')
 def products():
