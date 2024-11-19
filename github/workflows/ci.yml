@@ -3,10 +3,11 @@ name: CI/CD Pipeline
 on:
   push:
     branches:
-      - main 
+      - master
   pull_request:
     branches:
-      - main 
+      - master
+
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -38,7 +39,7 @@ jobs:
 
       - name: Run Unit Tests
         env:
-          MONGODB_USERNAME: ${{ secrets.Ankit114 }}
-          MONGODB_PASSWORD: ${{ secrets.123Ankit }}
+          MONGODB_USERNAME: ${{ secrets.MONGODB_USERNAME }}
+          MONGODB_PASSWORD: ${{ secrets.MONGODB_PASSWORD }}
         run: |
           python -m unittest discover tests/
