@@ -7,7 +7,7 @@ on:
   pull_request:
     branches:
       - master
-  workflow_dispatch: 
+  workflow_dispatch:  # Enable manual trigger
 
 jobs:
   test:
@@ -15,7 +15,7 @@ jobs:
 
     services:
       mongodb:
-        image: mongo:4.4 
+        image: mongo:4.4  # Using a stable MongoDB version
         ports:
           - 27017:27017
         options: >-
@@ -39,16 +39,15 @@ jobs:
           pip install python-dotenv
 
       - name: Wait for MongoDB to initialize
-        run: sleep 10 
+        run: sleep 30  # Wait for MongoDB to initialize
 
       - name: Run Unit Tests
         env:
-          MONGODB_USERNAME: ${{ secrets.MONGODB_USERNAME }}  
-          MONGODB_PASSWORD: ${{ secrets.MONGODB_PASSWORD }}  
+          MONGODB_USERNAME: ${{ secrets.MONGODB_USERNAME }}  # Using secrets to store sensitive data
+          MONGODB_PASSWORD: ${{ secrets.MONGODB_PASSWORD }}  # Ensure these secrets are set in GitHub
         run: |
           python -m unittest discover tests/  # Run all the unit tests in the 'tests' folder
 
       - name: Show MongoDB logs (if needed for troubleshooting)
         run: |
-          docker logs $(docker ps -q --filter ancestor=mongo) 
-
+          docker logs $(docker ps -q --filter ancestor=mongo)  # Display MongoDB logs for debugging
