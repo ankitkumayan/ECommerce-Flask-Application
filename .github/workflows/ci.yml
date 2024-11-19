@@ -1,0 +1,54 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+  workflow_dispatch: 
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    services:
+      mongodb:
+        image: mongo:4.4 
+        ports:
+          - 27017:27017
+        options: >-
+          --health-cmd="mongosh --eval 'db.runCommand({ connectionStatus: 1 })' || exit 1"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          pip install python-dotenv
+
+      - name: Wait for MongoDB to initialize
+        run: sleep 10 
+
+      - name: Run Unit Tests
+        env:
+          MONGODB_USERNAME: ${{ secrets.MONGODB_USERNAME }}  
+          MONGODB_PASSWORD: ${{ secrets.MONGODB_PASSWORD }}  
+        run: |
+          python -m unittest discover tests/  # Run all the unit tests in the 'tests' folder
+
+      - name: Show MongoDB logs (if needed for troubleshooting)
+        run: |
+          docker logs $(docker ps -q --filter ancestor=mongo) 
+
