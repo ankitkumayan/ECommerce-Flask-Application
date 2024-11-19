@@ -6,19 +6,19 @@ import os
 # Load environment variables from .env
 load_dotenv()
 
-MONGODB_USERNAME = os.getenv('ankit26114')
+MONGODB_USERNAME = os.getenv('Ankit114')
 MONGODB_PASSWORD = os.getenv('123Ankit')
 
 app = Flask(__name__)
 
-client = MongoClient(f'mongodb+srv://ankit26114:123Ankit@cluster0.vgyrk.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0')
+client = MongoClient(f'mongodb+srv://Ankit114:123Ankit@cluster0.35cii.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0')
 
 db = client['shop_db']
 products_collection = db['products']
 
 @app.route('/')
 def home():
-    return render_template('home.html')
+    return "Home Page"
 
 @app.route('/products')
 def products():
